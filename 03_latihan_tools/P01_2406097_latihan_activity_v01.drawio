@@ -1,0 +1,31 @@
+<mxfile host="65bd71144e">
+    <diagram id="wHbfOcKihb0JO11ZhVja" name="Page-1">
+        <mxGraphModel dx="894" dy="623" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="RVex7VKFFuHA97x6FcGJ-11" edge="1" parent="1" source="RVex7VKFFuHA97x6FcGJ-1" style="edgeStyle=none;html=1;" target="RVex7VKFFuHA97x6FcGJ-10" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="RVex7VKFFuHA97x6FcGJ-1" parent="1" style="ellipse;fillColor=strokeColor;html=1;" value="" vertex="1">
+                    <mxGeometry height="30" width="30" x="180" y="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="RVex7VKFFuHA97x6FcGJ-2" parent="1" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" value="" vertex="1">
+                    <mxGeometry height="30" width="30" x="180" y="490" as="geometry"/>
+                </mxCell>
+                <mxCell id="RVex7VKFFuHA97x6FcGJ-13" edge="1" parent="1" source="RVex7VKFFuHA97x6FcGJ-10" style="edgeStyle=none;html=1;" target="RVex7VKFFuHA97x6FcGJ-12" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="RVex7VKFFuHA97x6FcGJ-10" parent="1" style="whiteSpace=wrap;html=1;" value="Buka Data Peralatan" vertex="1">
+                    <mxGeometry height="60" width="120" x="135" y="195" as="geometry"/>
+                </mxCell>
+                <mxCell id="RVex7VKFFuHA97x6FcGJ-14" edge="1" parent="1" source="RVex7VKFFuHA97x6FcGJ-12" style="edgeStyle=none;html=1;" target="RVex7VKFFuHA97x6FcGJ-2" value="">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="RVex7VKFFuHA97x6FcGJ-12" parent="1" style="whiteSpace=wrap;html=1;" value="Lihat Informasi Ketersediaan" vertex="1">
+                    <mxGeometry height="60" width="120" x="135" y="335" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
