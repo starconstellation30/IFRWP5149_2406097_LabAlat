@@ -1,11 +1,11 @@
-ID artefak        : 01
-Judul             : Pengenalan Lingkungan Praktikum dan Kakas Pemodelan UML
-Pertemuan         : 1
-Sumber skenario   : Modul
-Jenis/status      : latihan
+ID artefak        : LAB-P02-UC
+Judul             : Latihan notasi fungsi laboratorium
+Pertemuan         : 02
+Sumber kebutuhan  : LAB-R01; LAB-R02
+Jenis/status      : Use case diagram / LATIHAN NOTASI
 Kakas             : draw.io
-Pembuat           : 2406097 Khansa Syafiqa
-Versi dan tanggal : v01 30-09-2026
-Asumsi/pertanyaan : -
-Pemeriksaan       : -
-Riwayat revisi    : -
+Pembuat           : Khansa Syafiqa Faadihillah Adiwinata (2406097)
+Versi dan tanggal : v01 / 07-10-2026
+Asumsi            : Hak akses sesuai; autentikasi di luar latihan
+Pemeriksaan       : [hasil review]
+Riwayat revisi    : [perubahan yang benar-benar dilakukan]
