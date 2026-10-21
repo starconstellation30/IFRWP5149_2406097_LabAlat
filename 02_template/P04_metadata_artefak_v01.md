@@ -1,8 +1,8 @@
 ID artefak        : P04
-Judul             : Penulisan Relasi pada Use Case Diagram
+Judul             : Melengkapi use case diagram menggunakan generalization dan collaboration
 Pertemuan         : 04
 Sumber kebutuhan  : Modul
-Jenis/status      : Use case diagram / Relasi
+Jenis/status      : Use case diagram / Generalization dan Collaboration
 Kakas             : draw.io
 Pembuat           : Khansa Syafiqa Faadihillah Adiwinata (2406097)
 Versi dan tanggal : v01 / 21-10-2026

@@ -1,56 +1,89 @@
-## 1. Deskripsi Skenario
-
-Mahasiswa mengajukan KRS dengan memilih mata kuliah. Sistem memvalidasi kelengkapan data, prasyarat mata kuliah, dan bentrok jadwal. Jika valid, pengajuan disimpan dengan status menunggu persetujuan dosen wali. Mahasiswa dapat memilih mengunduh bukti pengajuan. Dosen wali kemudian menyetujui atau menolak KRS dan memberikan catatan keputusan.
-
-## 2. Tabel Kebutuhan
-
-| ID | Kebutuhan |
+| Elemen | Keterangan |
 |---|---|
-| SIA-R01 | Mahasiswa dapat melihat jadwal kuliah. |
-| SIA-R02 | Admin akademik dapat mengelola jadwal kuliah. |
-| SIA-R03 | Mahasiswa dapat mengajukan KRS. |
-| SIA-R04 | Sistem memvalidasi KRS saat pengajuan. |
-| SIA-R05 | Mahasiswa dapat mengunduh bukti pengajuan jika memilihnya. |
-| SIA-R06 | Dosen wali dapat menyetujui atau menolak KRS. |
+| Tujuan | Menyimpan pengajuan KRS untuk diproses dosen wali. |
+| Aktor utama | Mahasiswa |
+| Sumber | SIA-R01, SIA-R02, SIA-R03 |
+| Pemicu | Mahasiswa memilih fungsi pengajuan KRS. |
+| Prasyarat | Mahasiswa telah terautentikasi dan data mata kuliah tersedia. |
+| Pascakondisi berhasil | Pengajuan tersimpan dengan status Menunggu persetujuan dosen wali. |
+| Pascakondisi gagal | Pengajuan tidak berhasil tersimpan. |
+| Include | SIA-UC02 — Validasi KRS |
+| Extend | SIA-UC03 — Unduh bukti pengajuan KRS |
 
-## 3. Batas Sistem dan Aturan
 
-**Batas sistem:**
-- Pengguna telah login.
-- Data mata kuliah, prasyarat, dan jadwal tersedia.
-- Pembayaran, pengisian nilai, dan implementasi basis data tidak termasuk dalam tugas.
+## 1. SIA-UC01 — Ajukan KRS
 
-**Aturan:**
-- KRS harus lolos validasi agar berhasil disimpan.
-- Bukti pengajuan bersifat opsional.
-- KRS yang tersimpan belum berarti telah disetujui dosen wali.
-- Admin akademik tidak dimasukkan ke diagram KRS karena pengelolaan jadwal berasal dari tugas sebelumnya.
-
-## 4. Tabel Identifikasi Aktor
-
-| Aktor | Peran |
+| Elemen | Deskripsi |
 |---|---|
-| Mahasiswa | Melihat jadwal, mengajukan KRS, dan mengunduh bukti pengajuan. |
-| Dosen Wali | Memproses persetujuan atau penolakan KRS. |
+| ID | SIA-UC01 |
+| Nama Use Case | Ajukan KRS |
+| Tujuan | Menghasilkan pengajuan KRS yang tersimpan untuk diproses dosen wali. |
+| Aktor Utama | Mahasiswa |
+| Sumber Kebutuhan | SIA-R01, SIA-R02, SIA-R03 |
+| Pemicu | Mahasiswa memilih fungsi pengajuan KRS. |
+| Prasyarat | Mahasiswa telah terautentikasi dan data mata kuliah tersedia. |
+| Pascakondisi Berhasil | Pengajuan tersimpan dengan status Menunggu persetujuan dosen wali. |
+| Pascakondisi Gagal | Pengajuan baru tidak berhasil tersimpan. |
+| Include | SIA-UC02 — Validasi KRS |
+| Extend | SIA-UC03 — Unduh bukti pengajuan KRS |
+| Extension Point | Bukti pengajuan tersedia pada konfirmasi penyimpanan. |
 
-## 5. Tabel Katalog Use Case
+## 2. SIA-UC02 — Validasi KRS
 
-| ID | Nama Use Case | Aktor/Peran | Sumber Kebutuhan |
-|---|---|---|---|
-| SIA-UC01 | Lihat jadwal kuliah | Mahasiswa | SIA-R01 |
-| SIA-UC03 | Ajukan KRS | Mahasiswa | SIA-R03 |
-| SIA-UC04 | Validasi KRS | Bagian dari proses sistem | SIA-R04 |
-| SIA-UC05 | Unduh bukti pengajuan KRS | Mahasiswa | SIA-R05 |
-| SIA-UC06 | Proses keputusan KRS | Dosen Wali | SIA-R06 |
+| Elemen | Deskripsi |
+|---|---|
+| ID | SIA-UC02 |
+| Nama Use Case | Validasi KRS |
+| Tujuan | Memastikan pengajuan KRS memenuhi ketentuan yang ditetapkan. |
+| Aktor Utama | Tidak ada aktor langsung; dipanggil oleh SIA-UC01. |
+| Sumber Kebutuhan | SIA-R02 |
+| Pemicu | SIA-UC01 meminta proses validasi. |
+| Prasyarat | Pengajuan telah dikirim dan data yang dibutuhkan tersedia. |
+| Pascakondisi Berhasil | Seluruh pemeriksaan validasi dinyatakan lolos. |
+| Pascakondisi Gagal | Sistem mengembalikan hasil validasi gagal beserta informasi masalah. |
+| Relasi | `<<include>>` dari SIA-UC01. |
 
-## 6. Relasi Include
+## 3. SIA-UC03 — Unduh Bukti Pengajuan KRS
 
-| Use Case Utama | Relasi | Use Case yang Disertakan | Alasan |
-|---|---|---|---|
-| SIA-UC03 Ajukan KRS | `<<include>>` | SIA-UC04 Validasi KRS | Setiap pengajuan KRS wajib melalui validasi. |
+| Elemen | Deskripsi |
+|---|---|
+| ID | SIA-UC03 |
+| Nama Use Case | Unduh bukti pengajuan KRS |
+| Tujuan | Memberikan bukti pengajuan KRS kepada mahasiswa. |
+| Aktor Utama | Mahasiswa |
+| Sumber Kebutuhan | SIA-R03 |
+| Pemicu | Mahasiswa memilih opsi unduh bukti pada konfirmasi pengajuan. |
+| Prasyarat | Pengajuan KRS berhasil tersimpan. |
+| Pascakondisi Berhasil | Bukti pengajuan berhasil diunduh. |
+| Pascakondisi Gagal | Pengajuan tetap tersimpan, tetapi bukti tidak berhasil diunduh. |
+| Relasi | `<<extend>>` terhadap SIA-UC01. |
+| Kondisi Extend | Mahasiswa memilih untuk mengunduh bukti. |
+| Extension Point | Bukti pengajuan tersedia pada konfirmasi penyimpanan. |
 
-## 7. Relasi Extend
+## 4. SIA-UC04 — Proses Keputusan KRS
 
-| Use Case Tambahan | Relasi | Use Case Dasar | Kondisi |
-|---|---|---|---|
-| SIA-UC05 Unduh bukti pengajuan KRS | `<<extend>>` | SIA-UC03 Ajukan KRS | Mahasiswa memilih mengunduh bukti setelah pengajuan berhasil. |
+| Elemen | Deskripsi |
+|---|---|
+| ID | SIA-UC04 |
+| Nama Use Case | Proses keputusan KRS |
+| Tujuan | Mencatat keputusan persetujuan atau penolakan pengajuan KRS. |
+| Aktor Utama | Dosen wali |
+| Sumber Kebutuhan | SIA-R04 |
+| Pemicu | Dosen wali memilih pengajuan KRS yang menunggu keputusan. |
+| Prasyarat | Dosen wali telah terautentikasi dan pengajuan tersedia untuk diproses. |
+| Pascakondisi Berhasil | Keputusan dan catatan tersimpan serta status pengajuan diperbarui. |
+| Pascakondisi Gagal | Keputusan baru tidak berhasil tersimpan dan status sebelumnya dipertahankan. |
+
+## 5. SIA-UC05 — Lihat Status Pengajuan KRS
+
+| Elemen | Deskripsi |
+|---|---|
+| ID | SIA-UC05 |
+| Nama Use Case | Lihat status pengajuan KRS |
+| Tujuan | Memungkinkan mahasiswa mengetahui status terkini pengajuan KRS. |
+| Aktor Utama | Mahasiswa |
+| Sumber Kebutuhan | SIA-R05 |
+| Pemicu | Mahasiswa membuka menu status pengajuan KRS. |
+| Prasyarat | Mahasiswa telah terautentikasi. |
+| Pascakondisi Berhasil | Status pengajuan KRS ditampilkan kepada mahasiswa. |
+| Pascakondisi Gagal | Sistem menampilkan informasi jika pengajuan belum tersedia. |
